@@ -1,0 +1,5 @@
+1. 首先添加实体、这里固定放到model包下。 [更该的话需要配置applicationContext.xml的扫描包 <property name="packagesToScan">]
+2. 添加service和serviceImpl、这里固定放到service包下。[更该的话需要配置springmvc.xml的扫描包]
+3. 添加controller、这里固定放到controller包下。[更该的话需要配置springmvc.xml的扫描包]
+4. serviceImpl 实物注解@Service() @Transactional
+5. 重启项目，即可。
