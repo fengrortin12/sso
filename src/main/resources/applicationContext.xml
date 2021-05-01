@@ -109,7 +109,10 @@
 	<bean id="baseDao" class="com.sso.dao.impl.BaseDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	
+
+	<bean id="systemService" class="com.sso.service.impl.SystemServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
 
 
