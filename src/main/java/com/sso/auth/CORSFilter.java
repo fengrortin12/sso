@@ -1,6 +1,8 @@
 package com.sso.auth;
 
 import com.alibaba.fastjson.JSONObject;
+import com.auth0.jwt.interfaces.Claim;
+import com.sso.jwt.JwtToken;
 import com.sso.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -105,6 +107,14 @@ public class CORSFilter implements Filter{
         if(isHandle( request)){//是白名单
             return true;
         }else{
+            /**token 进行验证 */
+            String token = request.getHeader("Authorization");
+            if(token!=null){
+                Map<String,Claim> map = JwtToken.verifyToken(token);
+                if(map!=null){//有效的token
+                    return true;
+                }
+            }
             return false;
         }
         // 一下可以进行 cookie tooken 验证
