@@ -100,5 +100,35 @@
   </bean>
 	
 	 -->
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/api/**" />
+			<bean class="com.sso.auth.AuthorityRestFilter" />
+		</mvc:interceptor>
+
+		<!-- 这样配置 回去找 com.sso.auth.AuthorityRestFilter 类中的 excludeUrls 免除过滤 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.sso.auth.AuthorityRestFilter">
+				<property name="excludeUrls">
+					<list>
+						<value>loginController.do?goPwdInit</value>
+						<value>loginController.do?pwdInit</value>
+						<value>loginController.do?login</value>
+						<value>loginController.do?logout</value>
+					</list>
+				</property>
+				<!-- 模糊匹配 -->
+				<property name="excludeContainUrls">
+					<list>
+						<value>toLogin.do</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	 
 </beans>

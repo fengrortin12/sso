@@ -39,6 +39,22 @@
     </servlet-mapping>
 
 
+    <!-- sebservice 的权限 拦截器 -->
+    <filter>
+        <filter-name>dispatcherDemoFilter</filter-name>
+        <filter-class>com.sso.auth.CORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>dispatcherDemoFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+
+    <!-- session监听 -->
+    <listener>
+        <listener-class>com.sso.auth.SessionListener</listener-class>
+    </listener>
+
+
     <!-- 配置字符集 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
