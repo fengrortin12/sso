@@ -20,7 +20,7 @@ public class JwtToken {
      * 获取Token
      * @return
      */
-    public static String createToken(){
+    public static String createToken(String userName){
         Date idtDate = new Date();//签发时间
         //过期时间
         Calendar nowTime = Calendar.getInstance();
@@ -34,7 +34,7 @@ public class JwtToken {
         try {
             token = JWT.create().withHeader(map)
                     .withClaim("name","张小凡")
-                    .withClaim("age","28")
+                    .withClaim("userName",userName)
                     .withClaim("org","zzy")
                     .withExpiresAt(expiresDate)
                     .withExpiresAt(idtDate)
@@ -69,8 +69,8 @@ public class JwtToken {
         System.out.println(token);*/
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmciOiJ6enkiLCJuYW1lIjoi5byg5bCP5YehIiwiZXhwIjoxNTM0OTIzMjU5LCJhZ2UiOiIyOCJ9.eCvyV_iWtffg-IKnmZAiIjxjj2j7GZ1IGg-NptsEGJg";
         Map<String,Claim>  map = JwtToken.verifyToken(token);
-        System.out.println(map);
-       /* String name = map.get("name").asString();
-        System.out.println(name);*/
+        System.out.println(map);//如果token失效，map为null
+       /* String userName = map.get("userName").asString();
+        System.out.println(userName);*/
     }
 }
