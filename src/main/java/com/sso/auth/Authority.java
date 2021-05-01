@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 /**
- * webservice 的 权限拦截器 暂时不使用,使用了AOP
+ * 这里也可以进行 拦截， 和  CORSFilter 二选一 即可
  */
 public class Authority implements HandlerInterceptor {
 
