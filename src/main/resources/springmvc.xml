@@ -106,13 +106,13 @@
 
 		<mvc:interceptor>
 			<mvc:mapping path="/api/**" />
-			<bean class="com.sso.auth.AuthorityRestFilter" />
+			<bean class="com.sso.auth.Authority" />
 		</mvc:interceptor>
 
 		<!-- 这样配置 回去找 com.sso.auth.AuthorityRestFilter 类中的 excludeUrls 免除过滤 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="com.sso.auth.AuthorityRestFilter">
+			<bean class="com.sso.auth.Authority">
 				<property name="excludeUrls">
 					<list>
 						<value>loginController.do?goPwdInit</value>
