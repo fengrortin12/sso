@@ -101,6 +101,9 @@
         <jetty.version>7.6.14.v20131031</jetty.version>
         <webserver.port>8080</webserver.port>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <jwt.version>3.1.0</jwt.version>
+
     </properties>
 
 
@@ -419,12 +422,12 @@
             <artifactId>commons-chain</artifactId>
             <version>${commons-chain.version}</version>
         </dependency>
-        <!-- commons-codec -->
-        <dependency>
+        <!-- commons-codec  encodeBase64 会导致 JWT 不能用 -->
+    <!--    <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- commons-digester -->
         <dependency>
             <groupId>commons-digester</groupId>
@@ -532,6 +535,12 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- jwt  -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${jwt.version}</version>
+        </dependency>
 
     </dependencies>
 
